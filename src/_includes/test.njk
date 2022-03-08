@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="{% imagecss 'twitter-card.png' %}" />
+    <meta property="og:title" content="{% if layout != "title.njk" %}{{ title }} | {% endif %}{{ site.title }}">
+    <meta property="og:description" content="{{ content | truncate(140) }}">
+    <meta name="twitter:title" content="{% if layout != "title.njk" %}{{ title }} | {% endif %}{{ site.title }}">
+    <meta name="twitter:image" content="{% imagecss 'twitter-card.png' %}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:description" content="{% if layout != "title.njk" %}{{ content | truncate(140) }}{% endif %}">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/app-icons/1332.png">
+    {% if site.favicon %}<link rel="icon" href="{% imagecss site.favicon %}">{% endif %}
+    <title>{% if layout != "title.njk" %}{{ title }} | {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="/css/print.css" media="print" rel="stylesheet" />
+    {% if site.googlefonts %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?{% for x, font in site.googlefonts %}family={{ font }}:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&{% endfor %}display=swap" rel="stylesheet">
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <texture class="recolor"></texture>
+    <grid class="nav">
+        <button class="mobile" onclick="$('.nav').fadeToggle();">Directory</button>
+        <aside class="toc">
+                <h1 class="title"><a href="/">{% if site.logowhite %}{% image site.logowhite, site.title, "title" %}{% else %}{{site.title}}{% endif %}</a></h1>
+                <h2>Chapters:</h2>
+            <nav class="toc">
+            {% set navPages = collections.all | eleventyNavigation("main") %}
+                <ol>
+                {%- for entry in navPages %}
+                <li{% if entry.url == page.url %} class="active"{% endif %}>
+                    <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+                </li>
+                {%- endfor %}
+                </ol>
+            </nav>
+        </aside>
+        {% if toc != "hide" %}
+        {% block toc %}
+            <aside class="toc">
+                <nav class="toc">
+                {{ content | toc( wrapper='nav', wrapperClass='toc', headingText='On This Page:') | safe }}
+                </nav>
+            </aside>
+        {% endblock %}
+        {% endif %}
+
+    </grid>
+
+    <grid class="main">
+        <style>
+        grid.main {
+            padding-left: 5em;
+            padding-top: 10%;
+        }
+        ul.selection li {
+            list-style: none;
+            cursor: pointer;
+        }
+        ul.selection li:hover {
+            list-style: disclosure-closed;
+        }
+        ul.selection li:hover::marker {
+            animation: blink 1s steps(5, start) infinite;
+            color: transparent;
+        }
+        h1.title2 {
+            text-align: left;
+            padding-top: 1em;
+            padding-bottom: 15px;
+            background: url(/images/blot-1678w.webp);
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: -25px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: rgba(255,255,255,0);
+            animation: animate 10s forwards;
+        }
+        @keyframes blink {
+            0% {
+                color: black;
+            }
+            50% {
+                color: black;
+            }
+            51% {
+                color: transparent;
+            }
+            100% {
+                color: transparent;
+            }
+        }
+        @keyframes animate {
+            0% {
+                background-position: -500%;
+            }
+            100% {
+                background-position:  -50%;
+            }
+            
+        }
+        </style>
+        <h1 class="title title2">{{ site.title }}</h1>
+        <ul class="selection">
+        <li>New Game</li>
+        <li>Load Game</li>
+        </ul>
+    </grid>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD04iHdVLWAia9if64ffclvvTLt50byKac",
+    authDomain: "buried-echoes.firebaseapp.com",
+    projectId: "buried-echoes",
+    storageBucket: "buried-echoes.appspot.com",
+    messagingSenderId: "441349712432",
+    appId: "1:441349712432:web:f360d6a92a8b0989b71bf5"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script></body>
+</html>

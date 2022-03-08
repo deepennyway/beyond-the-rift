@@ -1,0 +1,40 @@
+---
+title: Beyond the Rift
+parent: main
+layout: ink.njk
+ink: yes
+chapter: yes
+eleventyComputed:
+    story: {{ BeyondTheRift | dump | safe }}
+    eleventyNavigation:
+        key: "{{ title }}"
+        parent: "{{ parent }}"
+        title: Interactive Solo Mode
+        order: 99
+---
+
+
+<!-- ## Notes:
+The four suits represent different regions or environments:
+- Spades: The Forest
+- Hearts: The Village
+- Clubs: The Cave
+- Diamonds: The Ruins of the Tower
+
+The player can use any of these forms:
+- Gemfolk
+- Spiderkin
+- Drake
+- Human
+- Fey
+- Sun Child
+
+The player can come from any of these parts of the ruined city:
+- University
+- Market
+- Park
+- Medica
+
+Open questions:
+- Will the player have clothing to choose?
+- Will the player have a weapon? -->

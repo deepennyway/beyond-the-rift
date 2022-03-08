@@ -1,0 +1,30 @@
+{% extends "base.njk" %}
+
+{% block toc %}
+    <aside class="toc">
+        {{ content | toc( wrapper='nav', wrapperClass='toc', headingText=title) | safe }}
+    </aside>
+
+    <aside class="toc">
+        <h2>{{ parent }}</h2>
+        <nav class="toc">
+            {% include "partials/toc.njk" %}
+        </nav>
+    </aside>
+
+{% endblock %}
+
+{% block content %}
+                    <header><h1>{{ title }}</h1>
+                        {% if byline %}
+                            <h2 class="author">written by {% byline credits, byline %}</h2>
+                        {% endif %}
+                        {% if artist %}
+                            <h2 class="artist">illustrated by {% byline credits, artist %}</h2>
+                        {% endif %}</header>
+        
+    {% if art %}{% image art, arttext, "narrow" %}{% endif %}
+
+    {{ content | safe }}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+# theme: dark
+# author: Dee Pennyway
+VAR showRolls = true
+VAR scene = 0
+VAR rolled = 0
+VAR roll1 = 0
+VAR roll2 = 0
+VAR roll3 = 0
+VAR roll4 = 0
+VAR result = 0
+VAR clubs = 1
+VAR spades = 1
+VAR diamonds = 1
+VAR hearts = 1

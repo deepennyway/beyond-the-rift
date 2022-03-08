@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,700|Quattrocento:700');
+
+
+body.switched {
+    transition: color 0.6s, background-color 0.6s;
+}
+
+
+
+
+.header {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.thought {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.internal {
+    color: var(--accent);
+    padding-left: 1em;
+}
+
+.scene-title {
+    font-size: 1.5em;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/*
+  Built-in class:
+    # author: Name
+*/
+.byline {
+    font-style: italic;
+}
+
+.written-in-ink {
+    z-index: 3;
+    text-align: right;
+    transition: color 0.6s, background 0.6s;
+}
+
+/* 
+  Enables <iframe> support work on itch.io when using mobile iOS
+*/
+.outerContainer {
+    display: block;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 980px) {
+    .outerContainer {
+        margin-top: 44px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+.container {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.switched .container {
+    transition: background-color 0.6s;
+}
+
+
+a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+
+strong {
+    color: black;
+    font-weight: bold;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.container .hide {
+    opacity: 0.0;
+}
+
+.container .invisible {
+    display: none;
+}
+
+.container>* {
+    opacity: 1.0;
+    transition: opacity 1.0s;
+}
+
+/*
+  Class applied to all choices
+  (Will always appear inside <p> element by default.)
+*/
+.choice {
+    hyphens: none;
+    max-width: 50ch;
+    padding-bottom: .25em;
+    padding-left: 2em;
+}
+
+/* 
+  Class applied to first choice
+*/
+:not(.choice)+.choice {
+    padding-top: 1em;
+}
+
+
+/* 
+  Built-in class:
+    The End # CLASS: end
+*/
+.end {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#controls {
+    z-index: 4;
+    text-align: center;
+    padding-bottom: 6px;
+    user-select: none;
+    transition: color 0.6s, background 0.6s;
+}
+
+#controls [disabled] {
+    color: #ccc;
+}
+
+#controls>*:not(:last-child):after {
+    content: " | ";
+}
+
+@media screen and (max-width: 980px) {
+    #controls {
+        z-index: 2;
+        padding-top: 24px;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+

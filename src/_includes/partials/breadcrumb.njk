@@ -1,0 +1,10 @@
+
+<aside class="breadcrumb">
+<p>
+{{ collections.all | eleventyNavigationBreadcrumb(title) | eleventyNavigationToHtml({
+    listElement: "ul",
+    listItemElement: "li",
+    listClass: "breadcrumb"
+}) | safe }} | <span class="current">{{ eleventyNavigation.title }}</span>
+</p>
+</aside>

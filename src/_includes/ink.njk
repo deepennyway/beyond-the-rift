@@ -1,0 +1,36 @@
+﻿{% extends "base.njk" %}
+
+{% block toc %}
+{% endblock %}
+
+{% block content %}
+<header>
+{% if illustration %}
+    {% image illustration, illustration-text, "cover" %}
+{% endif %}
+<h1 class="title">{% if site.logo %}{% image site.logo, site.title, "title" %}{% else %}{{ site.title }}{% endif %}</h1>
+<h2 class="byline">by {{ site.author }}</h2>
+{% if site.illustrator %}<h2 class="byline">illustrated by {{ site.illustrator }}</h2>{% endif %}
+</header>
+    {{ content | safe }}
+    <section class="outerContainer">
+        {# <h3 class="written-in-ink"><a href="https://www.inklestudios.com/ink">Written in Ink</a></h3> #}
+
+        <nav id="controls" class="buttons">
+          <a id="rewind" title="Restart story from beginning">restart</a>
+          <a id="save" title="Restart story from beginning">save</a>
+          <a id="reload" title="Restart story from beginning">load</a>
+        </nav>
+
+        <section id="story" class="container">
+        </section>
+    </section>
+
+    <script>
+    const storyContent = {{ BeyondTheRift | dump | safe}};
+
+    {% include "ink/ink.js" %}
+    {% include "ink/main.js" %}
+    </script>
+
+{% endblock %}
